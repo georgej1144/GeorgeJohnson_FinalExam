@@ -144,7 +144,6 @@ app.post('/search', function(req, res) {
                 if(!items.data.meals) {
                     console.log("test")
                 }
-                res.json({status: 'success', message: 'search success'});
                 res.render('pages/main', {
                     local_css:"style.css",
                     my_title:"Main Page",
