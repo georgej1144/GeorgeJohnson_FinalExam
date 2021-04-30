@@ -217,7 +217,6 @@ app.post('/filter', function(req, res) {
             ]);
         })
             .then(data => {
-                res.json({status: 'success', message: 'filter success'});
                 res.render('pages/reviews',{
                     my_title: "Reviews",
                     reviews:data[0]
