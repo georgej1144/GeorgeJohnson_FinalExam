@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/reviews">Reviews</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid" style="padding-top: 30px;">
+    <div class="container d-flex justify-content-center" style="padding-bottom:20px;">
+        <div class="row">
+            <h1>
+                Food Reviews
+            </h1>
+        </div>
+    </div>
+    <form class="container-fluid " action="/filter" method="post">
+        <div class="row" style="padding-bottom: 20px">
+            <div class="col-3">
+
+            </div>
+            <div class="col-5">
+                <input class="form-control mr-sm-2" id="textBox" type="text" name="search" placeholder="Food to filter for" aria-label="Search">
+            </div>
+            <div class="col1">
+                <input class="btn btn-primary my-2 my-sm-0" id="searchButton" type="submit" value="Filter">
+            </div>
+        </div>
+    </form>
+
+
+    <%
+    if(reviews) {
+        var entries = '<tbody>';
+        var entry = '';
+        reviews.forEach(function(review) {
+        entry = '<tr>'
+            entry += '<td>' + review.food_name + '</td>';
+            entry += '<td>' + review.review + '</td>';
+            entry += '<td>' + review.reviewDate + '</td>';
+            entry += '</tr>';
+        entries += entry;
+        })
+    }
+    %>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Meal</th>
+                <th scope="col">Review</th>
+                <th scope="col">Review Date</th>
+            </tr>
+        </thead>
+
+        <%- entries %>
+    </table>
+</div>
+
+    <%- include('../partials/footer') %>
+
